@@ -20,9 +20,7 @@ public class MailController {
     public String MailSend(String mail){
 
         int number = mailService.sendMail(mail);
-
         String num = "" + number;
-
         return num;
     }
 
@@ -37,7 +35,12 @@ public class MailController {
 
         String findDetails = mailService.findDetails(name, email);
 
-        return "/user/verificationIdSent";
+        // Check the result and return appropriate view
+        if ("이름 또는 이메일이 존재하지 않습니다".equals(findDetails)) {
+            return "/user/userNotFoundView"; // Replace with the actual view for not found
+        } else {
+            return "/user/verificationIdSent"; // Replace with the actual view for successful operation
+        }
     }
 
 }

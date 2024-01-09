@@ -43,15 +43,9 @@ public class MailService {
             helper.setFrom(senderEmail);
             helper.setTo(mail);
             helper.setSubject("이메일 인증");
-
-            // Create a context to hold variables to be replaced in the template
             Context context = new Context();
             context.setVariable("content", String.valueOf(number));
-
-            // Process the HTML template with Thymeleaf
             String htmlContent = templateEngine.process("/user/mail", context);
-
-            // Set the email content as HTML
             helper.setText(htmlContent, true);
         } catch (MessagingException e) {
             e.printStackTrace();
@@ -64,7 +58,6 @@ public class MailService {
     public int sendMail(String mail) {
         MimeMessage message = createMail(mail);
         javaMailSender.send(message);
-
         return number;
     }
 
@@ -97,20 +90,16 @@ public class MailService {
 
     public String findDetails(String name, String email) {
 
-        System.out.println("이름 : " + name);
-        System.out.println("이메일 : " + email);
-
-
         if (name != null && email != null) {
             String findUserId = userMapper.findDetails(name, email);
-            MimeMessage message = createFindId(email, name, findUserId);
-            javaMailSender.send(message);
-            return findUserId;
-        } else {
-            return "이름 또는 이메일이 존재하지 않습니다";
+
+            if(findUserId != null) {
+                MimeMessage message = createFindId(email, name, findUserId);
+                javaMailSender.send(message);
+                return findUserId;
+            }
         }
+        return "이름 또는 이메일이 존재하지 않습니다";
     }
-
-
 
 }
