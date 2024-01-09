@@ -15,9 +15,12 @@
         }
 
         .bloom {
-            color:#C09A81;
-            font-size:50px;
+            color: #C09A81;
+            font-size: 50px;
             text-decoration: none;
+        }
+        .text {
+            color: black;
         }
     </style>
 </head>
@@ -28,13 +31,13 @@
 
     <h2 class="title">아이디 찾기</h2>
 
-    <p th:text="${ name }">님 안녕하세요<br>
-        Bloom에서 가입하신 아이디를 보내드립니다.<br><br>
-        아이디를 요청하지 않으셨다면 무시해주세요.</p>
+    <p th:utext="${ name } + '님 안녕하세요<br>Bloom에서 가입하신 아이디를 보내드립니다.<br>아이디를 요청하지 않으셨다면 무시해주세요.'"
+       class="text"></p>
+
 
     <div>
         <h4 style="color:#C09A81; justify-content: center; width: 200px;" id="codeBox"> 아이디 : </h4>
-        <h2 th:text="${ content }"></h2>
+        <h2 style="margin-top: -5px;" th:text="${ content }"></h2>
     </div>
 </div><br>
 

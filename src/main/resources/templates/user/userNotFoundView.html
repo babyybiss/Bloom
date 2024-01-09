@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>아이디 찾기</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/regist/regularRegist.css">
+  <link rel="stylesheet" type="text/css" href="/css/common/common.css">
+  <style>
+
+    .content {
+      flex: 1;
+    }
+    footer{
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+<div class="content">
+  <div class="header" th:include="components/Header.html"></div>
+
+  <h1>입력하신 이름 또는 이메일이 존재 하지 않습니다 </h1>
+  <h5>정보 확인 후 다시 시도하여주세요.</h5>
+  <button onclick="location.href='/user/login'" style="width: 150px; height: 40px; text-align:center; background-color: #C09A81; color: #ffffff; border-color: #C09A81; border-radius: 20px; border-style: solid;">로그인 하러 가기</button>&nbsp;&nbsp;
+  <button onclick="location.href='/user/findPassword'" style="width: 150px; height: 40px; text-align:center; background-color: #C09A81; color: #ffffff; border-color: #C09A81; border-radius: 20px; border-style: solid;">비밀번호 찾기</button>
+</div>
+<th:block th:include="components/beigeBackgroundBrownGrass.html"></th:block>
+<footer>
+  <th:block th:include="components/Footer.html" th:with="textColor='#FFF6E2'"></th:block>
+</footer>
+</body>
+</html>
+<!---->
