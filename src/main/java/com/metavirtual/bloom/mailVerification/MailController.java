@@ -29,17 +29,13 @@ public class MailController {
     @PostMapping("/mail/findId")
     public String sendId(@RequestParam("name") String name, @RequestParam("email") String email
             , @ModelAttribute UserDTO userDTO) {
-
-        System.out.println("이름 : " + name);
-        System.out.println("이메일 : " + email);
-
         String findDetails = mailService.findDetails(name, email);
 
         // Check the result and return appropriate view
         if ("이름 또는 이메일이 존재하지 않습니다".equals(findDetails)) {
-            return "/user/userNotFoundView"; // Replace with the actual view for not found
+            return "/user/userNotFoundView";
         } else {
-            return "/user/verificationIdSent"; // Replace with the actual view for successful operation
+            return "/user/verificationIdSent";
         }
     }
 

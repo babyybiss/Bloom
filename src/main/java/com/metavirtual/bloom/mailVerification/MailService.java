@@ -89,10 +89,8 @@ public class MailService {
     }
 
     public String findDetails(String name, String email) {
-
         if (name != null && email != null) {
             String findUserId = userMapper.findDetails(name, email);
-
             if(findUserId != null) {
                 MimeMessage message = createFindId(email, name, findUserId);
                 javaMailSender.send(message);
